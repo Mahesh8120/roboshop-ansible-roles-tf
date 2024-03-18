@@ -1,0 +1,4 @@
+#ansible-vault encrypt roles/rabbitmq/vars/main.yaml
+#ansible-vault edit roles/rabbitmq/vars/main.yaml
+# rq_user: roboshop 
+# rq_passwd: roboshop123

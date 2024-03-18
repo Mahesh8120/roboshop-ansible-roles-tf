@@ -1,0 +1,21 @@
+MONGODB_HOST: mongodb-prod.pjdevops.online
+
+CATALOGUE_HOST: catalogue-prod.pjdevops.online
+
+USER_HOST: user-prod.pjdevops.online
+
+CART_HOST: cart-prod.pjdevops.online
+
+WEB_HOST: web-prod.pjdevops.online
+
+REDIS_HOST: redis-prod.pjdevops.online
+
+MYSQL_HOST: mysql-prod.pjdevops.online
+
+SHIPPING_HOST: shipping-prod.pjdevops.online
+
+RABBITMQ_HOST: rabbitmq-prod.pjdevops.online
+
+PAYMENT_HOST: payment-prod.pjdevops.online
+
+DISPATCH_HOST: dispatch-prod.pjdevops.online

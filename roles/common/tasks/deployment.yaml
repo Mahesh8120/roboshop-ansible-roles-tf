@@ -1,0 +1,59 @@
+# stop the srever
+# remove old code
+# add new code
+# start the srever
+
+- name: "stopping the {{component}}"
+  ansible.builtin.service:
+    name: "{{component}}"
+    state: stopped
+  tags: 
+    - deployment
+
+- name: removing the old code
+  ansible.builtin.file:
+    name: /app
+    state: absent
+  tags:
+    - deployment
+
+- name: creating the app directory
+  ansible.builtin.file:
+    name: /app
+    state: directory
+  tags:
+    - deployment
+
+- name: "downloading file {{component}}.zip"
+  ansible.builtin.get_url:
+    url: "https://roboshop-builds.s3.amazonaws.com/{{component}}.zip"
+    dest: /tmp
+  tags: 
+    - deployment
+  
+- name: unarchile the zip file
+  ansible.builtin.unarchive:
+    src: "/tmp/{{component}}.zip"
+    dest: /app
+    remote_src: yes
+  tags: 
+    - deployment
+ 
+- name: Install dependencies
+  ansible.builtin.command: npm install
+  args:
+    chdir: /app
+  tags: 
+    - deployment
+
+- name: "start and enable the {{component}}"
+  ansible.builtin.service:
+    name: "{{component}}"
+    state: restarted
+    enabled: yes
+  tags: 
+    - deployment
+
+
+
+
