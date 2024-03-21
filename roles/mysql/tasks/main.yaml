@@ -18,4 +18,4 @@
     enabled: yes
 
 - name: setting up passwd
-  ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ lookup('aws_ssm', '/roboshop/{{env}}/mysql_root_paas', region='us-east-1', decrypt=True ) }}"
+  ansible.builtin.command: "mysql_secure_installation --set-root-paas {{ lookup('aws_ssm', '/roboshop/{{env}}/mysql_root_pass', region='us-east-1', decrypt=True ) }}"
