@@ -13,4 +13,4 @@
 
 - name: loading the shipping schema
   ansible.builtin.command: mysql -h {{MYSQL_HOST}} -uroot -p{{mysql_password}} < /app/schema/shipping.sql 
-  when: cities_schema.stdout == "0"
+  when: cities_schema.stdout != "1"
