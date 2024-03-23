@@ -11,6 +11,10 @@
   ansible.builtin.debug:
     msg: "cities count:{{cities_schema}}"
 
-- name: loading the shipping schema
-  ansible.builtin.command: mysql -h {{MYSQL_HOST}} -uroot -p{{mysql_password}} < /app/schema/shipping.sql 
-  when: cities_schema.stdout != "1"
+# - name: loading the shipping schema
+#   ansible.builtin.command: mysql -h {{MYSQL_HOST}} -uroot -p{{mysql_password}} < /app/schema/shipping.sql 
+#   when: cities_schema.stdout != "1"
+
+- name: load cities data
+  ansible.builtin.shell: "mysql -h {{MYSQL_HOST}} -uroot -p{{mysql_password}}  < /app/schema/shipping.sql"
+  when: schema.stdout != "1"
